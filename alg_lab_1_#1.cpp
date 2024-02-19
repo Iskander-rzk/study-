@@ -2,23 +2,58 @@
 #include <list>
 #include <random>
 #include <cstdlib>
+#include <fstream>
+#include <ctime>
+
+// Объявляем функцию f вне функции main
+int f(int* R);
 
 int main()
 {
+    int N = 10000;
+    int* R = new int[N];
+    std::random_device rd; // Используем генератор случайных чисел
+
+    std::mt19937 gen(rd()); // Создаем генератор случайных чисел на основе seed
+    std::uniform_int_distribution<int> dist(0, 10000); // Определение диапазона случайных чисел
+
+    for (int i = 0; i < N; i++) // Вывод исходного массива 
+    {
+        R[i] = dist(gen);
+    }
+
+    f(R);
+
+    return 0;
+}
+
+int f(int* R)
+{
+    std::ofstream myfile;
+    myfile.open("example.csv");
+    myfile << "X;Y2;Y3\n"; // запись заголовка из двух ячеек
+    int y2, y3; 
+
+    int k = 0;
+    unsigned int start_time =  clock();
     int n = 0;
     int m = 0;
     int max_sum;
-    int lst1[25] = { 27, 83, 14, 62, 75, 41, 29, 6, 97, 50, 18, 67, 9, 32, 89, 55, 23, 79, 38, 91, 12, 58, 21, 72, 43 };
+    k += 3;
+
     for (int i = 0; i < 25; i++)
     {
-        n = n + lst1[i];
-        if (m < lst1[i])
+        n = n + R[i];
+        if (m < R[i])
         {
-            m = lst1[i];
+            m = R[i];
             max_sum = n;
         }
+        k += 6;
     }
     std::cout << max_sum << std::endl;
-    std::cout << n - max_sum;
+    std::cout << n - max_sum << std::endl;
+    unsigned int end_time = clock(); // конечное врем
+    std::cout << end_time;
     return 0;
 }
