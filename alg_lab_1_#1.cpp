@@ -24,24 +24,43 @@ int main()
 
     f(R);
 
+    int* P = new int[N];
+    for (int i = 0; i < N; i++) // Заполняем исходный массив
+    {
+        P[i] = i;
+    }
+    f(P); // Вызываем функцию f
+
+    int* T = new int[N];
+    for (int i = 0; i < N; i++) // Заполняем исходный массив
+    {
+        T[i] = 10000 - i; // Устанавливаем значения в обратной последовательности
+    }
+    f(T); // Вызываем функцию f
+
     return 0;
 }
+
 
 int f(int* R)
 {
     std::ofstream myfile;
-    myfile.open("example.csv");
-    myfile << "X;Y2;Y3\n"; // запись заголовка из двух ячеек
-    int y2, y3; 
-
+    myfile.open("alg1.csv");
+    myfile << "randmsec;randk;maxmsec;maxk;minmsec;mink\n";
+    int y2, y3;
     int k = 0;
-    unsigned int start_time =  clock();
+    unsigned int start_time = clock();
+
     int n = 0;
     int m = 0;
     int max_sum;
-    k += 3;
 
-    for (int i = 0; i < 25; i++)
+    unsigned int end_time = clock();
+    k += 3;
+    myfile << end_time - start_time; 
+    myfile << ";"; 
+    unsigned int end_time = clock();
+    for (int i = 0; i < 10000; i++)
     {
         n = n + R[i];
         if (m < R[i])
@@ -51,9 +70,10 @@ int f(int* R)
         }
         k += 6;
     }
-    std::cout << max_sum << std::endl;
-    std::cout << n - max_sum << std::endl;
-    unsigned int end_time = clock(); // конечное врем
-    std::cout << end_time;
-    return 0;
+    std::cout << "maximum sum on left side " << max_sum << std::endl;
+    std::cout << "maximum sum on right side "  << n - max_sum << std::endl;
+    end_time = clock(); // конечное врем
+    std::cout << "time " << end_time << std::endl;
+    return 5;
 }
+

@@ -4,11 +4,10 @@
 #include <cstdlib>
 #include <fstream>
 #include <ctime>
-  
-void add(int* R);
-void subtract(int, int);
-void multiply(int, int);
-  
+
+// Объявляем функцию f вне функции main
+int f(int* R);
+
 int main()
 {
     int N = 10000;
@@ -21,18 +20,32 @@ int main()
     for (int i = 0; i < N; i++) // Вывод исходного массива 
     {
         R[i] = dist(gen);
-    }   
-    void (*operations[1])(int, int) = {add};
-       
-    // получаем длину массива
-    unsigned length = std::size(operations);
-       
-    for(unsigned i{}; i < length; i++)
-    {
-        operations[i](R);    // вызов функции по указателю
     }
+
+    f(R);
+
+
+    int* P = new int[N];
+    for (int i = 0; i < N; i++) // Заполняем исходный массив
+    {
+        P[i] = i;
+    }
+
+    f(P); // Вызываем функцию f
+
+
+    int* T = new int[N];
+    for (int i = 0; i < N; i++) // Заполняем исходный массив
+    {
+        T[i] = 10000 - i; // Устанавливаем значения в обратной последовательности
+    }
+    f(T); // Вызываем функцию f
+
+    return 0;
 }
-void add(int* R)
+
+
+int f(int* R)
 {
     std::ofstream myfile;
     myfile.open("example.csv");
@@ -46,7 +59,7 @@ void add(int* R)
     int max_sum;
     k += 3;
 
-    for (int i = 0; i < 25; i++)
+    for (int i = 0; i < 10000; i++)
     {
         n = n + R[i];
         if (m < R[i])
@@ -60,4 +73,6 @@ void add(int* R)
     std::cout << n - max_sum << std::endl;
     unsigned int end_time = clock(); // конечное врем
     std::cout << end_time << std::endl;
+    return 5;
 }
+
