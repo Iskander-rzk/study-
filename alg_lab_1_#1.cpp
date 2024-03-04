@@ -10,7 +10,7 @@ int f(int* R);
 
 int main()
 {
-    int N = 10000;
+    int N = 1000000;
     int* R = new int[N];
     std::random_device rd; // Используем генератор случайных чисел
 
@@ -70,10 +70,10 @@ int f(int* R)
         }
         k += 6;
     }
-    std::cout << "maximum sum on left side " << max_sum << std::endl;
-    std::cout << "maximum sum on right side "  << n - max_sum << std::endl;
+    //std::cout << "maximum sum on left side " << max_sum << std::endl;
+    //std::cout << "maximum sum on right side "  << n - max_sum << std::endl;
     end_time = clock(); // конечное врем
-    std::cout << "time " << end_time << std::endl;
-    return 5;
+    //std::cout << "time " << end_time << std::endl;
+    return 0;
 }
 
