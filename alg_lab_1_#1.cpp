@@ -29,14 +29,14 @@ int main()
     {
         P[i] = i;
     }
-    f(P); // Вызываем функцию f
+    //f(P); // Вызываем функцию f
 
     int* T = new int[N];
     for (int i = 0; i < N; i++) // Заполняем исходный массив
     {
         T[i] = 10000 - i; // Устанавливаем значения в обратной последовательности
     }
-    f(T); // Вызываем функцию f
+    //f(T); // Вызываем функцию f
 
     return 0;
 }
@@ -52,15 +52,17 @@ int f(int* R)
     unsigned int start_time = clock();
 
     int n = 0;
-    int m = 0;
+    int m = -1000000;
     int max_sum;
 
     unsigned int end_time = clock();
     k += 3;
     myfile << end_time - start_time; 
     myfile << ";"; 
-    unsigned int end_time = clock();
-    for (int i = 0; i < 10000; i++)
+    
+    //int A[11] = {2, 5, 6, 1, 13, 12, 25, 22, 12, 17, 4};
+    end_time = clock();
+    for (int i = 0; i < 12; i++)
     {
         n = n + R[i];
         if (m < R[i])
@@ -70,7 +72,7 @@ int f(int* R)
         }
         k += 6;
     }
-    //std::cout << "maximum sum on left side " << max_sum << std::endl;
+    //std::cout << "maximum sum on left side " << max_sum - m << std::endl;
     //std::cout << "maximum sum on right side "  << n - max_sum << std::endl;
     end_time = clock(); // конечное врем
     //std::cout << "time " << end_time << std::endl;

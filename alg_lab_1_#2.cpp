@@ -78,23 +78,24 @@ int main() {
     unsigned int end_time;
     std::ofstream myfile;
     myfile.open("alg2.csv");
-    myfile << "randmsec;randk;maxk;mink\n";
+    myfile << "X;timeRand;operRand;X;timeBest;operBest;X;timeWorst;operWorst\n";
     unsigned int start_time = clock();
-    for (int i = 0; i < 10000; ++i)
+    for (int i = 0; i < 10; ++i)
     {       
         std::vector<std::vector<int>> random_matrix = generate_random_matrix(n);
         countn = code(random_matrix);
         end_time = clock();
-        myfile << (end_time - start_time) << ";" << countn << ";";
+        myfile << n*n << ';' << (end_time - start_time) << ";" << countn << ";";
 
-        std::vector<std::vector<int>> worst_matrix = generate_worst_matrix(n);
-        countn = code(worst_matrix);
-        myfile << countn << ";";
-
-        
         std::vector<std::vector<int>> best_matrix = generate_best_matrix(n);
         countn = code(best_matrix);
-        myfile << countn << "\n";
+        myfile << n*n << ';' << (end_time - start_time) << ";" << countn << ";";
+
+        
+        std::vector<std::vector<int>> worst_matrix = generate_worst_matrix(n);
+        countn = code(worst_matrix);
+        myfile << n*n << ';' <<(end_time - start_time) << ";" << countn << "\n";
+        n += 100;
     }
 
     myfile.close();
