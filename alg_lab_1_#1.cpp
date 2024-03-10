@@ -29,7 +29,7 @@ int main()
         for (int i = 0; i < N; i++) // Вывод исходного массива 
         {
             R[i] = dist(gen);
-        }
+        } 
         
         n = f(R, N);
         end_time = clock();
