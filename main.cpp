@@ -1,78 +1,24 @@
 #include <iostream>
-#include <list>
-#include <random>
-#include <cstdlib>
-#include <fstream>
-#include <ctime>
-
-// Объявляем функцию f вне функции main
-int f(int* R);
+#include <string>
+#include <bitset>
 
 int main()
 {
-    int N = 10000;
-    int* R = new int[N];
-    std::random_device rd; // Используем генератор случайных чисел
-
-    std::mt19937 gen(rd()); // Создаем генератор случайных чисел на основе seed
-    std::uniform_int_distribution<int> dist(0, 10000); // Определение диапазона случайных чисел
-
-    for (int i = 0; i < N; i++) // Вывод исходного массива 
-    {
-        R[i] = dist(gen);
-    }
-
-    f(R);
-
-
-    int* P = new int[N];
-    for (int i = 0; i < N; i++) // Заполняем исходный массив
-    {
-        P[i] = i;
-    }
-
-    f(P); // Вызываем функцию f
-
-
-    int* T = new int[N];
-    for (int i = 0; i < N; i++) // Заполняем исходный массив
-    {
-        T[i] = 10000 - i; // Устанавливаем значения в обратной последовательности
-    }
-    f(T); // Вызываем функцию f
-
-    return 0;
+	int n = 0, b = 0, c, N = 0, l = 0;
+    signed short a;
+	std::cin >> a;
+	int i = 0;
+	while (i < a.size())
+	{
+		if (a[i] == '0')
+		{
+			if (n > N) N = n;
+			n = 0;
+			b = 1;
+		}
+		else if (a[i] == '1' && b == 1) n++;
+		i++;
+	}
+	std::cout << N;
+	return 0;
 }
-
-
-int f(int* R)
-{
-    std::ofstream myfile;
-    myfile.open("example.csv");
-    myfile << "X;Y2;Y3\n"; // запись заголовка из двух ячеек
-    int y2, y3;
-
-    int k = 0;
-    unsigned int start_time = clock();
-    int n = 0;
-    int m = 0;
-    int max_sum;
-    k += 3;
-
-    for (int i = 0; i < 10000; i++)
-    {
-        n = n + R[i];
-        if (m < R[i])
-        {
-            m = R[i];
-            max_sum = n;
-        }
-        k += 6;
-    }
-    std::cout << max_sum << std::endl;
-    std::cout << n - max_sum << std::endl;
-    unsigned int end_time = clock(); // конечное врем
-    std::cout << end_time << std::endl;
-    return 5;
-}
-

@@ -6,6 +6,7 @@
 #include <ctime>
 
 int countn{ 0 };
+int countn{ 0 };
 
 int randA()
 {
@@ -75,7 +76,7 @@ int main(int R, int* A)
     int target;
     unsigned int start_time = clock();
     unsigned int end_time = clock();
-    for (int i = 0; i <= 10000; i++)
+    for (int i = 0; i <= 100; i++)
     {
         std::vector<std::string> result;
         calculateExpressions(std::to_string(randA()), randNumber(), "", 0, 0, 0, result);
