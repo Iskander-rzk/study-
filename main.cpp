@@ -69,4 +69,4 @@ int main() {
     cout << "The number " << num << " in base " << base << " is " << result << endl;
     return 0;
 }
-/*/
+//*/ 
