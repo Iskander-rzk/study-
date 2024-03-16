@@ -23,7 +23,8 @@ int main()
     std::uniform_int_distribution<int> dist(0, 10000); // Определение диапазона случайных чисел
     unsigned int start_time = clock();
     unsigned int end_time = clock();
-    for (int a = 0; a < 100; a++)
+    /*//
+    for (int a = 0; a < 10; a++)
     {
         int* R = new int[N];
         for (int i = 0; i < N; i++) // Вывод исходного массива 
@@ -33,15 +34,14 @@ int main()
         
         n = f(R, N);
         end_time = clock();
-        myfile << N << ";" << end_time - start_time << ";";
+        myfile << N << ";" << end_time << ";";
         myfile << n << "\n";
-        N += 100;
+        N += 10000;
         delete[] R;
     }
-
-    /*/
+    
     /// Best caase
-    for (int a = 0; a < 100; a++)
+    for (int a = 0; a < 10; a++)
     {
         int* R = new int[N];
         for (int i = 0; i < N; i++) // Заполняем исходного массива 
@@ -51,13 +51,13 @@ int main()
         
         n = f(R, N);
         end_time = clock();
-        myfile << end_time - start_time << ";";
+        myfile << N << ";" << end_time << ";";
         myfile << n << "\n";
-        N += 100;
+        N += 10000;
         delete[] R;
-    }
+    }/*/
     /// Worst case
-     for (int a = 0; a < 100; a++)
+     for (int a = 0; a < 10; a++)
     {
         int* R = new int[N];
         for (int i = 0; i < N; i++) // Вывод исходного массива 
@@ -67,12 +67,11 @@ int main()
         
         n = f(R, N);
         end_time = clock();
-        myfile << end_time - start_time << ";";
+        myfile << N << ";" << end_time << ";";
         myfile << n << "\n";
-        N += 100;
+        N += 10000;
         delete[] R;
     } 
-/*///
     return 0;
 }
 
