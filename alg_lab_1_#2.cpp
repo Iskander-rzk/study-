@@ -6,7 +6,6 @@
 #include <cstdlib>
 #include <ctime>
 
-
 int code(std::vector<std::vector<int>>& random_matrix) {
     int n = random_matrix.size();
     int a = -1000000, c = 1000000, b = n - 1;
