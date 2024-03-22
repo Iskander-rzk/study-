@@ -1,14 +1,14 @@
 #include <iostream>
 #include <string>
-using namespace std;
+
 
 //По значению:
 
-string convertToBase(int num, int base) {
-    string res = "";
+std::string convertToBase(int num, int base) {
+    std::string res = "";
     while (num > 0) {
         int rem = num % base;
-        res = to_string(rem) + res;
+        res = std::to_string(rem) + res;
         num /= base;
     }
     return res;
@@ -16,57 +16,57 @@ string convertToBase(int num, int base) {
 
 int main() {
     int num, base;
-    cout << "Enter the decimal number: ";
-    cin >> num;
-    cout << "Enter the base of the new number system: ";
-    cin >> base;
-    cout << "The number " << num << " in base " << base << " is " << convertToBase(num, base) << endl;
+    std::cout << "Enter the decimal number: ";
+    std::cin >> num;
+    std::cout << "Enter the base of the new number system: ";
+    std::cin >> base;
+    std::cout << "The number " << num << " in base " << base << " is " << convertToBase(num, base) << std::endl;
     return 0;
 }
 
 
 //По ссылке:
-/*/
-void convertToBase(int num, int base, string& res) {
+/*//
+void convertToBase(int num, int base, std::string& res) {
     while (num > 0) {
         int rem = num % base;
-        res = to_string(rem) + res;
+        res = std::to_string(rem) + res;
         num /= base;
     }
 }
 
 int main() {
     int num, base;
-    string result = "";
-    cout << "Enter the decimal number: ";
-    cin >> num;
-    cout << "Enter the base of the new number system: ";
-    cin >> base;
+    std::string result = "";
+    std::cout << "Enter the decimal number: ";
+    std::cin >> num;
+    std::cout << "Enter the base of the new number system: ";
+    std::cin >> base;
     convertToBase(num, base, result);
-    cout << "The number " << num << " in base " << base << " is " << result << endl;
+    std::cout << "The number " << num << " in base " << base << " is " << result << std::endl;
     return 0;
 }
 
 
 //Через указатель:
 
-void convertToBase(int num, int base, string* res) {
+void convertToBase(int num, int base, std::string* res) {
     while (num > 0) {
         int rem = num % base;
-        *res = to_string(rem) + *res;
+        *res = std::to_string(rem) + *res;
         num /= base;
     }
 }
 
 int main() {
     int num, base;
-    string result = "";
-    cout << "Enter the decimal number: ";
-    cin >> num;
-    cout << "Enter the base of the new number system: ";
-    cin >> base;
+    std::string result = "";
+    std::cout << "Enter the decimal number: ";
+    std::cin >> num;
+    std::cout << "Enter the base of the new number system: ";
+    std::cin >> base;
     convertToBase(num, base, &result);
-    cout << "The number " << num << " in base " << base << " is " << result << endl;
+    std::cout << "The number " << num << " in base " << base << " is " << result << std::endl;
     return 0;
 }
 //*/ 
