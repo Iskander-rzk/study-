@@ -11,11 +11,15 @@ int main() {
         std::cin >> massive[i];
     }
 
-    int flag = 0, pause = 0;
+    int flag = 0;
     std::vector<int> new_massive;
     for (int i = 0; i < N; i++)
     {
-        if (massive[i] != 0) new_massive.push_back(massive[i]), flag++;
+        if (massive[i] == 0)
+        {
+            new_massive.push_back(massive[i]);
+            flag++;
+        }
         else if (flag == 0 || flag == 2 ) new_massive.push_back(massive[i]);
     }
 	

@@ -3,7 +3,13 @@
 
 
 //По значению:
-
+/**
+ * @brief 
+ * 
+ * @param num 
+ * @param base 
+ * @return std::string 
+ */
 std::string convertToBase(int num, int base) {
     std::string res = "";
     while (num > 0) {
