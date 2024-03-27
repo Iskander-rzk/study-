@@ -2,6 +2,13 @@
 #include <string>
 #include <vector>
 
+/**
+ * @brief 
+ * @param massive массив заполняемый пользователем 
+ * @param new_massive массив с новыми значениями
+ * @param flag определение чисел расположенных между нулевыми элементами
+ * @return int 
+ */
 int main() {
     const int N = 10;  
     int massive[N];

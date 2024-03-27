@@ -1,6 +1,14 @@
 #include <iostream>
 #include <string>
 
+/**
+ * @brief 
+ * @param N Количество столбцов в матрице
+ * @param M Количество строк в матрице
+ * @param massive заполняемый пользователем массив
+ * 
+ * @return int 
+ */
 int main() {
 	//Объявление двумерного массива
     const int N = 5, M = 4;	
