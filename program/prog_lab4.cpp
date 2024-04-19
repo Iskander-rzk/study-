@@ -1,79 +1,65 @@
 #include <iostream>
-#include <string>
+#include <vector>
 
-
-//По значению:
 /**
- * @brief convertToBase конвертирует число в указаную систему счисления
- * 
- * @param num число которое нужно преоброзовать 
- * @param base система счисления в которую преобразуют
- * @param res представление числа в n-ичной системе счисления
- * @return std::string 
+ * @brief 
+ * @param N, M колличество строк и столбцов матрицы
+ * @param max1, max2 максимальный элемент в строке матрицы
+ * @param
+ * @return int 
  */
-std::string convertToBase(int num, int base) {
-    std::string res = "";
-    while (num > 0) {
-        int rem = num % base;
-        res = std::to_string(rem) + res;
-        num /= base;
-    }
-    return res;
-}
+
 
 int main() {
-    int num, base;
-    std::cout << "Enter the decimal number: ";
-    std::cin >> num;
-    std::cout << "Enter the base of the new number system: ";
-    std::cin >> base;
-    std::cout << "The number " << num << " in base " << base << " is " << convertToBase(num, base) << std::endl;
-    return 0;
-}
+    int N, M;
+    std::cout << "Enter the number of rows and columns of the matrix: ";
+    std::cin >> N >> M;
 
-
-//По ссылке:
-/*//
-void convertToBase(int num, int base, std::string& res) {
-    while (num > 0) {
-        int rem = num % base;
-        res = std::to_string(rem) + res;
-        num /= base;
+    // Ввод матрицы
+    std::vector<std::vector<int>> matrix(N, std::vector<int>(M));
+    std::cout << "Enter matrix elements:" << std::endl;
+    for (int i = 0; i < N; i++) {
+        std::cout << "Line " << i + 1 << ": ";
+        for (int j = 0; j < M; j++) {
+            std::cin >> matrix[i][j];
+        }
     }
-}
 
-int main() {
-    int num, base;
-    std::string result = "";
-    std::cout << "Enter the decimal number: ";
-    std::cin >> num;
-    std::cout << "Enter the base of the new number system: ";
-    std::cin >> base;
-    convertToBase(num, base, result);
-    std::cout << "The number " << num << " in base " << base << " is " << result << std::endl;
-    return 0;
-}
+    // Сортировка строк матрицы по наибольшим элементам с использованием "пузырьковой" сортировки
+    for (int i = 0; i < N - 1; i++) {
+        for (int j = 0; j < N - i - 1; j++) {
+            // Находим максимальные элементы в сравниваемых строках
+            int max1 = matrix[j][0];
+            for (int k = 1; k < M; k++) {
+                if (matrix[j][k] > max1) {
+                    max1 = matrix[j][k];
+                }
+            }
 
+            int max2 = matrix[j + 1][0];
+            for (int k = 1; k < M; k++) {
+                if (matrix[j + 1][k] > max2) {
+                    max2 = matrix[j + 1][k];
+                }
+            }
 
-//Через указатель:
-
-void convertToBase(int num, int base, std::string* res) {
-    while (num > 0) {
-        int rem = num % base;
-        *res = std::to_string(rem) + *res;
-        num /= base;
+            // Если максимальный элемент в первой строке больше, чем во второй, меняем строки местами
+            if (max1 > max2) {
+                std::swap(matrix[j], matrix[j + 1]);
+            }
+        }
     }
-}
 
-int main() {
-    int num, base;
-    std::string result = "";
-    std::cout << "Enter the decimal number: ";
-    std::cin >> num;
-    std::cout << "Enter the base of the new number system: ";
-    std::cin >> base;
-    convertToBase(num, base, &result);
-    std::cout << "The number " << num << " in base " << base << " is " << result << std::endl;
+    // Вывод отсортированной матрицы
+    std::cout << "Sorted matrix:" << std::endl;
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < M; j++)
+        {
+            std::cout << matrix[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
     return 0;
 }
-//*/ 
