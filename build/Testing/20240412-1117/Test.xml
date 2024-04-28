@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Site BuildName="Win32-ninja"
-	BuildStamp="20240322-0554-Experimental"
+	BuildStamp="20240412-1117-Experimental"
 	Name="DESKTOP-52SKVK1"
 	Generator="ctest-3.28.1"
 	CompilerName="C:/msys64/mingw64/bin/g++.exe"
@@ -18,17 +18,17 @@
 	ProcessorCacheSize="0"
 	NumberOfLogicalCPU="12"
 	NumberOfPhysicalCPU="6"
-	TotalVirtualMemory="22618"
+	TotalVirtualMemory="21082"
 	TotalPhysicalMemory="15706"
 	LogicalProcessorsPerPhysical="2"
 	ProcessorClockFrequency="2096"
 	>
 	<Testing>
-		<StartDateTime>Mar 23 06:35 [NON-UTF-8-BYTE-0xD2][NON-UTF-8-BYTE-0xEE][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xF1][NON-UTF-8-BYTE-0xEA] ([NON-UTF-8-BYTE-0xE7][NON-UTF-8-BYTE-0xE8][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xE0])</StartDateTime>
-		<StartTestTime>1711150512</StartTestTime>
+		<StartDateTime>Apr 12 18:17 [NON-UTF-8-BYTE-0xD2][NON-UTF-8-BYTE-0xEE][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xF1][NON-UTF-8-BYTE-0xEA] ([NON-UTF-8-BYTE-0xE7][NON-UTF-8-BYTE-0xE8][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xE0])</StartDateTime>
+		<StartTestTime>1712920627</StartTestTime>
 		<TestList/>
-		<EndDateTime>Mar 23 06:35 [NON-UTF-8-BYTE-0xD2][NON-UTF-8-BYTE-0xEE][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xF1][NON-UTF-8-BYTE-0xEA] ([NON-UTF-8-BYTE-0xE7][NON-UTF-8-BYTE-0xE8][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xE0])</EndDateTime>
-		<EndTestTime>1711150512</EndTestTime>
+		<EndDateTime>Apr 12 18:17 [NON-UTF-8-BYTE-0xD2][NON-UTF-8-BYTE-0xEE][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xF1][NON-UTF-8-BYTE-0xEA] ([NON-UTF-8-BYTE-0xE7][NON-UTF-8-BYTE-0xE8][NON-UTF-8-BYTE-0xEC][NON-UTF-8-BYTE-0xE0])</EndDateTime>
+		<EndTestTime>1712920627</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

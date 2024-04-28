@@ -3,7 +3,14 @@
 
 
 //По значению:
-
+/**
+ * @brief convertToBase конвертирует число в указаную систему счисления
+ * 
+ * @param num число которое нужно преоброзовать 
+ * @param base система счисления в которую преобразуют
+ * @param res представление числа в n-ичной системе счисления
+ * @return std::string 
+ */
 std::string convertToBase(int num, int base) {
     std::string res = "";
     while (num > 0) {

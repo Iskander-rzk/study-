@@ -1,6 +1,14 @@
 #include <iostream>
 #include <string>
 
+/**
+ * @brief 
+ * @param N Количество столбцов в матрице
+ * @param M Количество строк в матрице
+ * @param massive заполняемый пользователем массив
+ * 
+ * @return int 
+ */
 int main() {
 	//Объявление двумерного массива
     const int N = 5, M = 4;	
@@ -26,12 +34,13 @@ int main() {
 	//обрабатываем введеные данные 
     int n = 0;
 	for (i = 0; i < N; i++) {  //внешний цикл отвечает за перебор строк
-		for (j = 0; j < M; j++)  
+        if(i % 2 != 1) continue;
+        for (j = 0; j < M; j++)  
         {
             if (massive[i][j] <= 0) n += massive[i][j];
         }
         massive[i][0] = n;
-         n = 0;
+        n = 0;
 	}
     
     
