@@ -1,79 +1,40 @@
 #include <iostream>
-#include <string>
+#include <vector>
 
+void show_object()
+{
 
-//По значению:
-/**
- * @brief convertToBase конвертирует число в указаную систему счисления
- * 
- * @param num число которое нужно преоброзовать 
- * @param base система счисления в которую преобразуют
- * @param res представление числа в n-ичной системе счисления
- * @return std::string 
- */
-std::string convertToBase(int num, int base) {
-    std::string res = "";
-    while (num > 0) {
-        int rem = num % base;
-        res = std::to_string(rem) + res;
-        num /= base;
-    }
-    return res;
-}
-
-int main() {
-    int num, base;
-    std::cout << "Enter the decimal number: ";
-    std::cin >> num;
-    std::cout << "Enter the base of the new number system: ";
-    std::cin >> base;
-    std::cout << "The number " << num << " in base " << base << " is " << convertToBase(num, base) << std::endl;
-    return 0;
 }
 
 
-//По ссылке:
-/*//
-void convertToBase(int num, int base, std::string& res) {
-    while (num > 0) {
-        int rem = num % base;
-        res = std::to_string(rem) + res;
-        num /= base;
+int main()
+{
+    int a = 1, number_object = 1;
+    std::vector<int> Objects, year, address, size, sites;
+    std::vector<std::vector<int>> sports;
+    while (a != 0)
+    {
+        
+        std::cout << "1. Choose the studium" << std::endl << "2. Add the studium" << std::endl << "0. Exit";
+        std::cin >> a;
+        if (a == 0) break;
+        else if (a == 1)
+        {
+            for (int i = 0; i <= Objects.size(); i++)  std::cout << i << "." << Objects[i];
+
+            std::cin >> number_object;
+            if (number_object <= Objects.size())
+            {
+                std::cout << Objects[number_object] << std::endl;
+                std::cout << "Year o building: " << year[number_object] << std::endl;
+                std::cout << "Address: " << address[number_object] << std::endl;
+                std::cout << "Capacity: " << size[number_object] << std::endl;
+
+                for (int i = 0; i <= sports[number_object].size(); i++)
+                {
+                    std::cout << sports[number_object][i];
+                }
+            }
+        }
     }
 }
-
-int main() {
-    int num, base;
-    std::string result = "";
-    std::cout << "Enter the decimal number: ";
-    std::cin >> num;
-    std::cout << "Enter the base of the new number system: ";
-    std::cin >> base;
-    convertToBase(num, base, result);
-    std::cout << "The number " << num << " in base " << base << " is " << result << std::endl;
-    return 0;
-}
-
-
-//Через указатель:
-
-void convertToBase(int num, int base, std::string* res) {
-    while (num > 0) {
-        int rem = num % base;
-        *res = std::to_string(rem) + *res;
-        num /= base;
-    }
-}
-
-int main() {
-    int num, base;
-    std::string result = "";
-    std::cout << "Enter the decimal number: ";
-    std::cin >> num;
-    std::cout << "Enter the base of the new number system: ";
-    std::cin >> base;
-    convertToBase(num, base, &result);
-    std::cout << "The number " << num << " in base " << base << " is " << result << std::endl;
-    return 0;
-}
-//*/ 

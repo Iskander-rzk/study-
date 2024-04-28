@@ -3,29 +3,36 @@
 
 /**
  * @brief 
- * @param N, M колличество строк и столбцов матрицы
- * @param max1, max2 максимальный элемент в строке матрицы
- * @param
- * @return int 
+ * 
+ * @param N 
+ * @param M 
+ * @return std::vector<std::vector<int>> 
  */
+ 
 
-
-int main() {
-    int N, M;
-    std::cout << "Enter the number of rows and columns of the matrix: ";
-    std::cin >> N >> M;
-
-    // Ввод матрицы
-    std::vector<std::vector<int>> matrix(N, std::vector<int>(M));
+std::vector<std::vector<int>> enter(int N, int M) 
+{
+    std::vector<std::vector<int>> matrix;
     std::cout << "Enter matrix elements:" << std::endl;
-    for (int i = 0; i < N; i++) {
-        std::cout << "Line " << i + 1 << ": ";
-        for (int j = 0; j < M; j++) {
-            std::cin >> matrix[i][j];
+    int a;
+
+    for (int i = 0; i < N; i++) 
+    {
+        std::vector<int> row;
+        for (int j = 0; j < M; j++)
+        {
+            std::cin >> a;
+            row.push_back(a);
         }
+        matrix.push_back(row);
     }
 
-    // Сортировка строк матрицы по наибольшим элементам с использованием "пузырьковой" сортировки
+    return matrix;
+}
+
+std::vector<std::vector<int>> sort_matrix(std::vector<std::vector<int>>& matrix, int N, int M)
+{
+    
     for (int i = 0; i < N - 1; i++) {
         for (int j = 0; j < N - i - 1; j++) {
             // Находим максимальные элементы в сравниваемых строках
@@ -49,9 +56,12 @@ int main() {
             }
         }
     }
+    return matrix;
+    
+}
 
-    // Вывод отсортированной матрицы
-    std::cout << "Sorted matrix:" << std::endl;
+void print(std::vector<std::vector<int>>& matrix, int N, int M)
+{
     for (int i = 0; i < N; i++)
     {
         for (int j = 0; j < M; j++)
@@ -60,6 +70,22 @@ int main() {
         }
         std::cout << std::endl;
     }
+}
+
+
+int main() {
+    int N, M;
+    // Ввод матрицы
+    std::cout << "Enter the number of rows and columns of the matrix: ";
+    std::cin >> N >> M;
+    std::vector<std::vector<int>> matr = enter(N, M);
+
+     // Сортировка матрицы
+    std::vector<std::vector<int>> matrix = sort_matrix(matr, N, M);
+
+    // Вывод отсортированной матрицы
+    std::cout << "Sorted matrix:" << std::endl;
+    print(matrix, N, M);
 
     return 0;
 }
