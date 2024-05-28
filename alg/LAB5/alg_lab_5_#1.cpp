@@ -1,106 +1,74 @@
 #include <iostream>
-#include <list>
-#include <random>
-#include <cstdlib>
-#include <fstream>
-#include <ctime>
-
-
-int* randA(int N); // Предварительное объявление функции
-int shell_sort(int *R, int size);
-int* best_sort(int N); 
-int* worst_sort(int N); 
-
+#include <bitset>
+#include <string>
+#include <iomanip>
+#include <math.h>
+#include <typeinfo>
 int main()
 {
-    std::ofstream myfile;
-    myfile.open("alg3_1.csv");
-    myfile << "X;Roper;sec;X;Boper;sec;X;Woper;sec\n";
-    int N = 1000; // Размер массива
-    int* R = randA(N); // Генерация случайного массива
-    unsigned int start_time = clock();
-    unsigned int end_time = clock();
-    for (int i = 0; i < 10; i++ )
+    float num;
+    long long1, longValue;
+    std::cout << "Введите число Float в десятичной системе счисления: ";
+    std::cin >> num;
+    std::cout << "Введите число Long в десятичной системе счисления: ";
+    std::cin >> long1;
+    union {         //позволяет хранить разные типы данных в одном и том же месте памяти 
+        float d;
+        long long u;
+    } conversion;
+
+    conversion.d = num;
+
+    std::bitset<sizeof(float) * 8> binary(conversion.u);
+    std::string binaryStr = binary.to_string();         //для вывода в 2СС
+
+        // разбиваем число на знак, мантиссу и экспоненту
+    std::bitset<64> bits(*reinterpret_cast<unsigned long long*>(&num));
+
+    long sign = bits[63] ? '-' : '+';           // определение знака 
+
+    std::string mantissa_str = bits.to_string().substr(12, 52);         //извлечение мантиссы числа и преобразование в строку
+    float mantissa = std::stod(mantissa_str);
+
+    std::string a = "01";
+    float nn = 1.0;
+    float temp = 0.0;
+    int i = 0;
+    for (long digit : mantissa_str)         //поочередно берется каждый элемент последовательности символов digits
     {
-        myfile << N << ";";
-        myfile << shell_sort(randA(N), N) << ";";
-        myfile << clock() - start_time << ";";
-        myfile << N << ";";
-        myfile << shell_sort(best_sort(N), N) << ";";
-        myfile << clock() - start_time << ";";
-        myfile << N << ";";
-        myfile << shell_sort(worst_sort(N), N) << ";";
-        myfile << clock() - start_time << ";" <<"\n";
-        N += 1000;
+                // в строке а выбирается элемент digit и сохраняется в value
+        temp += a.find(digit) * pow(2, -(i + 1));
+        i++;
     }
 
-    delete[] R; // Освобождение памяти
+    nn += temp;
+    std::string true_mantissa_str = bits.to_string().substr(8, 23);
+    float true_mantissa = std::stod(mantissa_str);
+    std::string exponent = binaryStr.substr(11, 52);
+    long long int value, power = 0;
 
+    for (long digit : exponent)
+    {
+        value = a.find(digit);
+        power = power * 2 + value;
+    }
+    power = power - 1023;
+    float number_10 = nn * std::pow(2, power);
+    long sign1 = bits[63] ? '-' : ' ';
+    std::cout << "Binary  = " << binaryStr << std::endl;
+    std::cout << "Знак  " << sign << " (" << (sign == '+' ? "положительное число" : "отрицательное число") << ")" << std::endl;
+    std::cout << "Мантисса = " << mantissa_str << std::endl;
+    std::cout << "Настоящая мантисса = 1. + " << true_mantissa_str << std::endl;
+    std::cout << "Степень = " << exponent << std::endl;
+    std::cout << "Настоящая степень = " << exponent << " - 11 1111 1111" << std::endl;
+    std::cout << std::fixed << std::setprecision(19);
+    std::cout << "Число 10СС  = " << sign1 << number_10 << std::endl;    
+
+    std::cout << "float занимает байт: " << sizeof(float) << std::endl;
+    std::cout << "long занимает байт: " << sizeof(long) << std::endl;
+
+            //перевод ushort в двоичное представление
+    std::bitset<sizeof(long) * 8> bitsic(long1);
+    std::cout << "Long в двоичном виде: " << bitsic.to_string() << std::endl;
     return 0;
-}
-
-int* randA(int N)
-{
-    int* R = new int[N]; // Выделение памяти под массив
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dist(1, 100000);
-
-    for (int i = 0; i < N; i++)
-    {
-        R[i] = dist(gen);
-    }
-    
-    return R; // Возвращаем указатель на массив
-}
-
-
-int* best_sort(int N)
-{
-    int* R = new int[N]; // Выделение памяти под массив
-    for (int i = 0; i < N; i++)
-    {
-        R[i] = 1;
-    }
-    
-    return R; // Возвращаем указатель на массив
-}
-
-
-int* worst_sort(int N)
-{
-    int* R = new int[N]; // Выделение памяти под массив
-    for (int i = 0; i < N; i++)
-    {
-        R[i] = N - i;
-    }
-    
-    return R; // Возвращаем указатель на массив
-}
-
-
-
-int shell_sort(int *R, int size) 
-{
-    int countn = 3;
-    for (int s = size / 2; s > 0; s /= 2) {
-        countn += 2;
-        for (int i = s; i < size; ++i) {
-            countn += 2;
-            for (int j = i - s; j >= 0 && R[j] > R[j + s]; j -= s) {
-                countn += 5;
-                int temp = R[j];
-                R[j] = R[j + s];
-                R[j + s] = temp;
-                countn += 4;
-            }
-        }
-    }
-    /*/
-    for (int i = 0; i < size; i++)
-    {
-        std::cout << R[i] << "  ";
-    }
-    /*/
-    return countn;
 }

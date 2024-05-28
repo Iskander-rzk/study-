@@ -1,106 +1,44 @@
 #include <iostream>
-#include <list>
-#include <random>
-#include <cstdlib>
-#include <fstream>
-#include <ctime>
-
-
-int* randA(int N); // Предварительное объявление функции
-int shell_sort(int *R, int size);
-int* best_sort(int N); 
-int* worst_sort(int N); 
-
+#include <string>
+ 
+std::string FloatToBin(const double x)
+{
+    std::string ret;
+    unsigned int z = x;
+    double r = x-z;
+    
+    // тут переводится целая часть
+    while (z!=0)
+    {
+        ret=(char)(z%2+0x30)+ret; 
+        z=z/2;
+    }
+    
+    int counter=0;
+    //тут дробная
+    if (r!=0) ret+=".";
+    while (r!=0)
+    {
+        z=r*2;
+        ret+=(char)(z+0x30);
+        r=r*2-z;
+        ++counter;
+        if (counter==10) // тут понимаем, процесс затянулся и число может быть вообще иррационально, поставим точки
+          {
+              ret+="...";
+              break;
+          }
+    }
+    return ret;
+}
+ 
 int main()
 {
-    std::ofstream myfile;
-    myfile.open("alg3_1.csv");
-    myfile << "X;Roper;sec;X;Boper;sec;X;Woper;sec\n";
-    int N = 1000; // Размер массива
-    int* R = randA(N); // Генерация случайного массива
-    unsigned int start_time = clock();
-    unsigned int end_time = clock();
-    for (int i = 0; i < 10; i++ )
-    {
-        myfile << N << ";";
-        myfile << shell_sort(randA(N), N) << ";";
-        myfile << clock() - start_time << ";";
-        myfile << N << ";";
-        myfile << shell_sort(best_sort(N), N) << ";";
-        myfile << clock() - start_time << ";";
-        myfile << N << ";";
-        myfile << shell_sort(worst_sort(N), N) << ";";
-        myfile << clock() - start_time << ";" <<"\n";
-        N += 1000;
-    }
-
-    delete[] R; // Освобождение памяти
-
+    std::string s;
+    float a;
+    std::cout << "Введите число Float в десятичной системе счисления: ";
+    std::cin >> a;
+    s = FloatToBin(a);
+    std::cout << s << std::endl;
     return 0;
-}
-
-int* randA(int N)
-{
-    int* R = new int[N]; // Выделение памяти под массив
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dist(1, 100000);
-
-    for (int i = 0; i < N; i++)
-    {
-        R[i] = dist(gen);
-    }
-    
-    return R; // Возвращаем указатель на массив
-}
-
-
-int* best_sort(int N)
-{
-    int* R = new int[N]; // Выделение памяти под массив
-    for (int i = 0; i < N; i++)
-    {
-        R[i] = 1;
-    }
-    
-    return R; // Возвращаем указатель на массив
-}
-
-
-int* worst_sort(int N)
-{
-    int* R = new int[N]; // Выделение памяти под массив
-    for (int i = 0; i < N; i++)
-    {
-        R[i] = N - i;
-    }
-    
-    return R; // Возвращаем указатель на массив
-}
-
-
-
-int shell_sort(int *R, int size) 
-{
-    int countn = 3;
-    for (int s = size / 2; s > 0; s /= 2) {
-        countn += 2;
-        for (int i = s; i < size; ++i) {
-            countn += 2;
-            for (int j = i - s; j >= 0 && R[j] > R[j + s]; j -= s) {
-                countn += 5;
-                int temp = R[j];
-                R[j] = R[j + s];
-                R[j + s] = temp;
-                countn += 4;
-            }
-        }
-    }
-    /*/
-    for (int i = 0; i < size; i++)
-    {
-        std::cout << R[i] << "  ";
-    }
-    /*/
-    return countn;
 }
