@@ -1,29 +1,85 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
 
-void show_object()
-{
-
-}
+/**
+ * @brief 
+ * 
+ * @return int 
+ */
 
 
 int main()
 {
     int a = 1, number_object = 1, n;
-    std::string b;
+    std::string b, line;
     std::vector<std::string> Objects, year, address, size, sites, local_sports;
     std::vector<std::vector<std::string>> sports;
-    Objects.push_back("спортак");
-    year.push_back("27 августа 2014");
-    address.push_back("спортак");
-    size.push_back("45 496 зрителей");
-    sites.push_back("футбольное поле, две хоккейные арены, теннисную академия");
-    sports.push_back({"Футбол ", "Хокей ", "Теннис ",});
+
+    std::ifstream in("Objects.txt"); // окрываем файл для чтения
+    
+    if (in.is_open())
+    {
+        while (std::getline(in, line))
+        {
+            std::cout << line << std::endl;
+            Objects.push_back(line);
+        }
+    }
+
+    std::ifstream in("year.txt"); // окрываем файл для чтения
+    
+    if (in.is_open())
+    {
+        while (std::getline(in, line))
+        {
+            std::cout << line << std::endl;
+            year.push_back(line);
+        }
+    }
+ 
+
+    std::ifstream in("address.txt"); // окрываем файл для чтения
+    
+    if (in.is_open())
+    {
+        while (std::getline(in, line))
+        {
+            std::cout << line << std::endl;
+            address.push_back(line);
+        }
+    }
+
+    std::ifstream in("sites.txt"); // окрываем файл для чтения
+    
+    if (in.is_open())
+    {
+        while (std::getline(in, line))
+        {
+            std::cout << line << std::endl;
+            sites.push_back(line);
+        }
+    }
+
+    std::ifstream in("sports.txt"); // окрываем файл для чтения
+    
+    if (in.is_open())
+    {
+        while (std::getline(in, line))
+        {
+            std::cout << line << std::endl;
+            Objects.push_back(line);
+        }
+    }
+ 
+
+    
+ 
     
     while (a != 0)
     {
         
-        std::cout << "1. Choose the studium" << std::endl << "2. Add the studium" << std::endl << "0. Exit" << std::endl;
+        std::cout << "1. Choose the studium" << std::endl << "2. Add the studium" << std::endl << "3. Delete the studium" << std::endl << "0. Exit" << std::endl;
         std::cin >> a;
         
         if (a == 0) break;
@@ -80,6 +136,22 @@ int main()
                 local_sports.push_back(b);
             }
             sports.push_back(local_sports);
+        }
+        else if (a == 3)
+        {
+            for (int i = 1; i < Objects.size()+1; i++)  std::cout << i << "." << Objects[i-1] << std::endl;
+            std::cout << "0. Exit" << std::endl;
+            std::cin >> number_object;
+            if (a == 0) break;
+            number_object--;
+            if (number_object < Objects.size())
+            {
+                Objects.erase(Objects.begin() + number_object);
+                year.erase(year.begin() + number_object);
+                address.erase(address.begin() + number_object);
+                sites.erase(sites.begin() + number_object);
+                sports.erase(sports.begin() + number_object);
+            }
         }
     }
 }
