@@ -1,0 +1,14 @@
+[
+{
+  "directory": "C:/C++_study/program/lab6/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -g -o CMakeFiles\\main.dir\\prog_lab6_1.cpp.obj -c C:\\C++_study\\program\\lab6\\prog_lab6_1.cpp",
+  "file": "C:\\C++_study\\program\\lab6\\prog_lab6_1.cpp",
+  "output": "CMakeFiles\\main.dir\\prog_lab6_1.cpp.obj"
+},
+{
+  "directory": "C:/C++_study/program/lab6/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -g -o CMakeFiles\\main.dir\\prog_lab6_2.cpp.obj -c C:\\C++_study\\program\\lab6\\prog_lab6_2.cpp",
+  "file": "C:\\C++_study\\program\\lab6\\prog_lab6_2.cpp",
+  "output": "CMakeFiles\\main.dir\\prog_lab6_2.cpp.obj"
+}
+]
