@@ -55,7 +55,7 @@ int main() {
         {
             // Сброс в первоначальное положение
             rect.resetPosition();
-            std::cout << "After resetting to original position:\n";
+            std::cout << "After resetting to original position: " << std::endl;
             rect.printParameters();
         }
         

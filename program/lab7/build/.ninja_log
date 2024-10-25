@@ -1,15 +1,6 @@
 # ninja log v5
-19	534	7401280863708732	CMakeFiles/main.dir/prog_lab7_move.cpp.obj	5294fe5a4440a9d9
-5	539	7401280863747337	CMakeFiles/main.dir/prog_lab6_1.cpp.obj	45c21f81faa06c9b
-15	550	7401280863851541	CMakeFiles/main.dir/prog_lab7.cpp.obj	c1c1545405ff17dc
-10	561	7401280863972363	CMakeFiles/main.dir/prog_lab6_2.cpp.obj	cf543fe413778255
-22	727	7401286725898099	CMakeFiles/main.dir/prog_lab7.cpp.obj	c1c1545405ff17dc
-27	729	7401286725903335	CMakeFiles/main.dir/prog_lab7_move.cpp.obj	5294fe5a4440a9d9
-17	382	7401287515773797	CMakeFiles/main.dir/prog_lab7.cpp.obj	c1c1545405ff17dc
-22	398	7401287515948327	CMakeFiles/main.dir/prog_lab7_move.cpp.obj	5294fe5a4440a9d9
 37	420	7401288798215178	CMakeFiles/main.dir/prog_lab7_move.cpp.obj	5294fe5a4440a9d9
-32	424	7401288798245329	CMakeFiles/main.dir/prog_lab7.cpp.obj	c1c1545405ff17dc
-29	449	7401288798512848	CMakeFiles/main.dir/prog_lab6_2.cpp.obj	cf543fe413778255
-25	381	7401288998475907	CMakeFiles/main.dir/prog_lab6_1.cpp.obj	45c21f81faa06c9b
 20	362	7401289457304709	CMakeFiles/main.dir/prog_lab6_1.cpp.obj	45c21f81faa06c9b
-363	481	7401289458406668	main.exe	415dfcba39bee14a
+11	511	7401367379010779	CMakeFiles/main.dir/prog_lab7.cpp.obj	c1c1545405ff17dc
+29	449	7401288798512848	CMakeFiles/main.dir/prog_lab6_2.cpp.obj	cf543fe413778255
+512	690	7401367380774165	main.exe	415dfcba39bee14a
